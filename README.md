@@ -8,8 +8,6 @@ This repository contains scripts to fetch data from 10 YouTube channels and stor
 
 To retrieve data from YouTube channels and store it in MongoDB, execute the following command:
 
-Run the `ChannelData.py` script:
-
    ```shell
    python ChannelData.py
    ```
