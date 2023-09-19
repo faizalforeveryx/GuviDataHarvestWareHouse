@@ -13,6 +13,7 @@ Run the `ChannelData.py` script:
    ```shell
    python ChannelData.py
 
+
 This command will create a MongoDB database named "youtube" and a collection named "channels" to store the fetched data.
 
 ## Data Migration
