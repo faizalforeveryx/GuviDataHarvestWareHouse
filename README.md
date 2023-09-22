@@ -2,39 +2,24 @@
 
 ## Overview
 
-This repository contains scripts to fetch data from 10 YouTube channels and store it in a MongoDB database. Additionally, it provides instructions for migrating data from MongoDB to SQL and displaying questions and answers using a Streamlit interface.
+This repository offers a powerful solution for extracting, storing, and analyzing data from YouTube channels. It empowers you to effortlessly retrieve data from YouTube channel(s), efficiently store it in a MongoDB database, and seamlessly migrate it to a SQL database. Furthermore, it provides an interactive Streamlit interface for querying and exploring the collected data.
 
-## Data Retrieval
+## User Interface
 
-To retrieve data from YouTube channels and store it in MongoDB, execute the following command:
-
-   ```shell
-   python ChannelData.py
-   ```
-
-This command will create a MongoDB database named "youtube" and a collection named "channels" to store the fetched data.
-
-## Data Migration
-
-To migrate data from MongoDB to SQL, follow these instructions:
-
-1. Create SQL tables by running:
+To begin your YouTube data journey, simply run the following command:
 
    ```shell
-   python SqlTableCreation.py
+   streamlit run UserInterface.py
    ```
 
-2. Migrate data from MongoDB to SQL using:
+This command unlocks a world of possibilities, enabling you to:
 
-   ```shell
-   python MongoToSql.py
-   ```
+- Retrieve Data from YouTube: Gather valuable insights by fetching data from your selected YouTube channel(s).
 
-## Streamlit Interface
+- Efficient Data Storage: Store the collected YouTube data with precision and efficiency in a MongoDB database.
 
-To display questions and answers in a Streamlit interface, execute the following command:
+- Seamless Data Migration: Transition your data seamlessly from MongoDB to a structured SQL database.
 
-   ```shell
-   streamlit run AllQuestions.py
-   ```
+- Interactive Streamlit Interface: Explore your YouTube data effortlessly with an interactive Streamlit interface that simplifies access, analysis, and querying.
 
+Discover the full potential of your YouTube data with the streamlined capabilities of this project.
