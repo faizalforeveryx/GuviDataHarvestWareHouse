@@ -1,7 +1,7 @@
 import sqlite3
 
 # Define a main method
-def main():
+def create_tables():
     # SQLite connection
     sqlite_conn = sqlite3.connect('youtube.db')
     sqlite_cursor = sqlite_conn.cursor()   
@@ -13,7 +13,8 @@ def main():
             Channel_Name VARCHAR(255),
             Channel_Views INT,
             Subscribers INT,
-            Total_Videos INT
+            Total_Videos INT, 
+            Created_Date DATETIME DEFAULT CURRENT_TIMESTAMP 
         );
     '''
 
@@ -21,6 +22,7 @@ def main():
 
     create_table_query = '''
         CREATE TABLE IF NOT EXISTS playlist (
+            Channel_Id VARCHAR(255),
             Channel_Name VARCHAR(255),
             Playlist_Name VARCHAR(255),
             Playlist_ID VARCHAR(255),
@@ -33,6 +35,7 @@ def main():
 
     create_table_query = '''
         CREATE TABLE IF NOT EXISTS video (
+            Channel_Id VARCHAR(255),
             Channel_Name VARCHAR(255),
             video_id VARCHAR(255),
             Title VARCHAR(255),
@@ -52,6 +55,7 @@ def main():
 
     create_table_query = '''
         CREATE TABLE IF NOT EXISTS comment (
+            Channel_Id VARCHAR(255),
             Channel_Name VARCHAR(255),
             Comment_Id VARCHAR(255),
             Video_Id VARCHAR(255),
@@ -62,8 +66,3 @@ def main():
     '''
 
     sqlite_cursor.execute(create_table_query)
-
-
-# Run the main method if this script is executed
-if __name__ == "__main__":
-    main()

@@ -189,7 +189,7 @@ def get_comment_details(youtube, video_ids):
 
     return all_comments
 
-def getChannelData(youtube, channel_id):
+def get_channel_data(youtube, channel_id):
     print('Fetch process started for channel_id:', channel_id)
     channel_details = get_channel_stats(youtube, channel_id)
     playlist_details = get_channel_playlists(youtube, channel_id)
@@ -210,13 +210,7 @@ def getChannelData(youtube, channel_id):
     return data
 
 # Define a main method
-def main():
-    # Define your API key
-    api_key = 'AIzaSyDZriL-vfkvXgVHgchRkp__ALp7Ir9Z9gk'
-    channel_ids = ['UCvyBHHuExqhMOG2vHqkggXA', 'UCpR62MSOeBQVXub13xwZ8aA', 'UCu7Zwf4X_OQ-TEnou0zdyRA',
-                   'UC_uuQgT36XQCp4WQim6In-Q', 'UCzBjutX2PmitNF4avysL-vg', 'UC78Ib99EBhMN3NemVjYm3Ig',
-                   'UCmBuL9OfCclzvTyJB5OYSFw', 'UCOn8m3Y9rtZ6_T0ht8o6nAA', 'UCEo_JfTH_9FK-7k9-mAWJkQ',
-                   'UC0imHw-zG3H0wyXgd06bNLg']
+def fetch_channel_info(api_key, channel_ids):
     # Specify the API service name and version
     api_service_name = "youtube"
     api_version = "v3"
@@ -227,11 +221,17 @@ def main():
     mydb = myclient["youtube"]
     mycol = mydb["channels"]
 
-    for channel_id in channel_ids:
-        result = getChannelData(youtube, channel_id)
-        mycol.insert_one(result)
-        print('\n')
+    # Create a query filter to match documents with "Channel Id" in the list
+    query = {"channel_details.Channel Id": {"$in": channel_ids}}
 
-# Run the main method if this script is executed
-if __name__ == "__main__":
-    main()
+    # Use the delete_many method to delete matching documents
+    result = mycol.delete_many(query)
+
+    # Print the number of documents deleted
+    print(result.deleted_count, "existing document(s) deleted from mongo db")
+
+    for channel_id in channel_ids:
+        result = get_channel_data(youtube, channel_id)
+        mycol.insert_one(result)
+    
+
