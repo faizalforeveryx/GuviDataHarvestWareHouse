@@ -4,8 +4,8 @@
 
 This repository offers a powerful solution for extracting, storing, and analyzing data from YouTube channels. It empowers you to effortlessly retrieve data from YouTube channel(s), efficiently store it in a MongoDB database, and seamlessly migrate it to a SQL database. Furthermore, it provides an interactive Streamlit interface for querying and exploring the collected data.
 
-# User Interface
-## Getting Started
+## User Interface
+
 To begin your YouTube data journey, simply run the following command:
 
    ```shell
